@@ -2,17 +2,16 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import carsRoutes from "./routes/cars.js";
-import mongoose from "mongoose";
 import userRoutes from "./routes/user.js";
 import reservationsRoutes from "./routes/reservations.js";
-import { connectToDb, PORT } from "./db";
+import { connectToDb, PORT } from "./db.js";
 import path from "path";
 
 dotenv.config();
 
 // Creating an instance of the express app
 const app = express();
-app.use(express.static(path.join(__dirname, "../", "public")));
+// app.use(express.static(path.join(__dirname, "../", "public")));
 app.use(
   cors({
     origin: "https://car-rent-app-iota.vercel.app",
