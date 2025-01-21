@@ -14,7 +14,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, "../", "public")));
 
 app.use(cors({
-  origin: 'https://car-rent-app-iota.vercel.app/',
+  origin: 'https://car-rent-app-iota.vercel.app',
 }));
 
 // Middleware for parsing JSON requests
@@ -26,17 +26,17 @@ app.use((req, res, next) => {
 });
 
 // Middleware for handling CORS headers
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", ["*"]);
-//   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-//   res.header("Access-Control-Allow-Headers", "Content-Type, authorization");
-//   res.header("Access-Control-Allow-Credentials", "true");
-//   if ("OPTIONS" === req.method) {
-//     res.sendStatus(200);
-//   } else {
-//     next();
-//   }
-// });
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", ["*"]);
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+  if ("OPTIONS" === req.method) {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 
 // Setting up routes for different parts of the application
 app.use("/api/cars", carsRoutes);
