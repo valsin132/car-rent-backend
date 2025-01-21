@@ -48,6 +48,10 @@ app.use("/api/cars", carsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/reservations", reservationsRoutes);
 
+app.get("/", (req, res) => {
+    res.send("<h1>Welcome to CarRent API</h1>");
+  });
+
 // Connecting to the MongoDB database
 // mongoose.connect(process.env.URI)
 //     .then(() => {
