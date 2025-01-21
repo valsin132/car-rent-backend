@@ -16,6 +16,7 @@ dotenv.config();
 // Creating an instance of the express app
 const app = express();
 app.use(express.static(path.join(__dirname, "../", "public")));
+app.use(cors());
 // app.use(
 //   cors({
 //     origin: "https://car-rent-app-iota.vercel.app",
@@ -48,18 +49,18 @@ app.use("/api/cars", carsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/reservations", reservationsRoutes);
 
-// Connecting to the MongoDB database
-// mongoose.connect(process.env.URI)
-//     .then(() => {
-//         app.listen(process.env.PORT, () => {
-//             console.log('listening on port', process.env.PORT)
-//         })
-//     })
-//     .catch((err) => console.log(err));
-connectToDb()
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  })
-  .catch((err) => {
-    console.error("Failed to connect to the database", err);
-  });
+
+mongoose.connect(process.env.URI)
+    .then(() => {
+        app.listen(process.env.PORT, () => {
+            console.log('listening on port', process.env.PORT)
+        })
+    })
+    .catch((err) => console.log(err));
+// connectToDb()
+//   .then(() => {
+//     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+//   })
+//   .catch((err) => {
+//     console.error("Failed to connect to the database", err);
+//   });
