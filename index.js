@@ -12,7 +12,9 @@ dotenv.config();
 // Creating an instance of the express app
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://car-rent-app-iota.vercel.app/',
+}));
 
 // Middleware for parsing JSON requests
 app.use(express.json());
