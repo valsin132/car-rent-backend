@@ -5,30 +5,30 @@ import carsRoutes from "./routes/cars.js";
 import userRoutes from "./routes/user.js";
 import reservationsRoutes from "./routes/reservations.js";
 import { connectToDb, PORT } from "./db.js";
-import { fileURLToPath } from 'url';
+// import { fileURLToPath } from 'url';
 import path from "path";
 
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 // Creating an instance of the express app
 const app = express();
 app.use(express.static(path.join(__dirname, "../", "public")));
-app.use(
-  cors({
-    origin: "https://car-rent-app-iota.vercel.app",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://car-rent-app-iota.vercel.app",
+//   })
+// );
 
 // Middleware for parsing JSON requests
 app.use(express.json());
 
-app.use((req, res, next) => {
-  console.log(req.path, req.method);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log(req.path, req.method);
+//   next();
+// });
 
 // Middleware for handling CORS headers
 app.use((req, res, next) => {
@@ -47,10 +47,6 @@ app.use((req, res, next) => {
 app.use("/api/cars", carsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/reservations", reservationsRoutes);
-
-app.get("/", (req, res) => {
-    res.send("<h1>Welcome to CarRent API</h1>");
-  });
 
 // Connecting to the MongoDB database
 // mongoose.connect(process.env.URI)
