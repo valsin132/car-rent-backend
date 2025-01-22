@@ -27,6 +27,10 @@ app.use(cors());
 // Middleware for parsing JSON requests
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.send("<h1>Welcome to the CarRent app API</h1>");
+  });
+
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
