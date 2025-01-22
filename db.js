@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 
-const PORT = process.env.PORT ?? 5000;
+export const PORT = process.env.PORT ?? 5000;
 
-const connectToDb = async () => {
+export const connectToDb = async () => {
   try {
     const url = process.env.URI;
     if (url === undefined) return;
@@ -16,4 +16,4 @@ const connectToDb = async () => {
   }
 };
 
-export { connectToDb, PORT };
+// export { connectToDb, PORT };
