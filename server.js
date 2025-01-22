@@ -5,14 +5,14 @@ import carsRoutes from "./routes/cars.js";
 import userRoutes from "./routes/user.js";
 import reservationsRoutes from "./routes/reservations.js";
 import { connectToDb, PORT } from "./db.js";
-// import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'url';
 import path from "path";
 import mongoose from "mongoose";
 
 dotenv.config();
 
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Creating an instance of the express app
 const app = express();
